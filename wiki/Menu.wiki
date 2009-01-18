@@ -1,2 +1,2 @@
-[http://code.google.com/p/lwrte/wiki/API Core-API]<br>
-[http://code.google.com/p/lwrte/wiki/Toolbars Toolbars]
+  * [http://code.google.com/p/lwrte/wiki/API API]
+  * [http://code.google.com/p/lwrte/wiki/Toolbars Toolbars]
