@@ -42,13 +42,16 @@ More about that commands here:<br>
 *Turn on Design Mode*. Design Mode - mode where you can execute special commands to make changes into DOM. Use *editor_cmd* function for that. This function does: creates new iframe, copies text from textarea, removes textarea from DOM, turn on design mode for iframe.
 
 ===disable_design_mode(submit)===
-*Turn off Design Mode*. Actually this function does: creates new textarea, copies text from iframe, removes iframe from DOM.
+*Turn off Design Mode*. Actually this function does: 
+
+  * if 'submit' is false, then creates new textarea, copies text from iframe, removes iframe from DOM. 
+  * if 'submit' is true, then creates new 'hidden' input, copies text from iframe and submit data.
 
 ===create_toolbar(controls)===
 This function creates toolbar from provided controls(creates, without insertion into the DOM). You can use it later with function *activate_toolbar*.
 
 ===create_panel(title, width)===
-If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (use can use 'show', 'fadeIn' and other jQuery effect funсtions).
+If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (use can use 'show', 'fadeIn' and other jQuery effect funсtions). You can set specific 'title' and 'width' of that panel.
 
 ===get_toolbar()===
 That function returns jQuery object with current active toolbar ('.rte-toolbar') for editor. Remember, we have different toolbars for source mode and design mode!
@@ -59,8 +62,8 @@ That function activates toolbar 'tb' for editor. Actually it does next: remove c
 ===toolbar_click(obj, control)===
 This is callback function for any toolbar control. Toolbar consists of number of controls (buttons and etc). Read more about toolbars in documentation for it.
 This callback does next:
-If control has own callback, than it executes.
-If contol hasn't callback, but have 'command' and current mode is design mode, then it executes that 'command'.
+If 'control' has own callback, than it executes.
+If 'contol' hasn't callback, but have 'command' and current mode is design mode, then it executes that 'command'. 'obj' is control that was clicked/changed.
 
 ===get_selection_range()===
 This function returns range object (browser specific) for current selection. *Works for design mode only.*
