@@ -132,3 +132,6 @@ This array is using by core (*set_selected_controls*) to mark active controls. U
 
 === Example: ===
 tags: ['b', 'strong']
+
+<hr>
+*Check source of basic toolbar to get more examples of controls*
