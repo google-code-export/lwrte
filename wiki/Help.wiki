@@ -1,4 +1,3 @@
-#labels Featured
 = Documentation for Light weight RTE (WYSIWYG) jQuery plugin =
 
 == Help for: ==
