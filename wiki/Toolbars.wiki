@@ -1,1 +1,134 @@
-Cooming soon...
+= Introduction =
+=== So....it's "TOOLBARS" time :) ===
+
+The idea of that RTE plugin for jQuery is - split core and toolbars functionality, but without any bloating core-api. So core can do only basic functions (read about it in API section).
+
+Let's look for basic usage of plugin (turn any textarea with class 'rte' into WYSIWYG):
+<code>
+	$('.rte').rte({
+		controls_rte: rte_toolbar,
+		controls_html: html_toolbar
+	});
+</code>
+As you can see there are 2 options: *controls_rte* and *controls_html*. Later you will know know to create it. Just remember, plugin has no any bult-in toolbars or controls by default. If you will use it without any options:
+<code>
+	$('.rte').rte();
+</code>
+you will get next:
+[img1] and [img2]
+The only controls enable\disable as you see. It has built-in callback, but actually you can overwrite it (inherit, by other words. It's very useful for additional text-processing between switching of modes or before submit).
+
+Ok, now you are really ready to create own controls.
+
+= Creating Own Controls =
+Controls is javascript object actually, that has specific format. Format is simple, and probably suit for any task that you will want. Controls is the thing that you provide at startup/initialize step as 'controls_rte' and 'controls_html' inside of options. Look for example above.
+
+== Format of controls ==
+<pre>
+{
+ *command:* string
+ *separator:* boolean
+ *exec:* function
+ *args:* string or array
+ *select:* string
+ *arg_cmp:* function
+ *hint*: string
+ *tags:* array
+}
+</pre>
+
+Let's talk about each thing.
+
+== command (string) ==
+It's command for browser's design mode editor. Some commands need additional arguments (for example, name of font), some don't. It's browser specific feature. 
+
+=== Example: ===
+command: 'formatBlock'
+
+You can read more about that commands here:<br>
+  http://msdn.microsoft.com/en-us/library/ms533049(VS.85).aspx<br>
+  http://www.mozilla.org/editor/midas-spec.html<br>
+
+== separator (boolean) ==
+Just set it true, if you want add new separator inside of your toolbar. Other parameters are omitted.
+=== Example: ===
+separator: true
+
+== exec ( function() ) ==
+Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference.
+===Example 1: Hello world ===
+<code>
+exec: function() {
+	alert("Hello world from that control");
+}
+</code>
+===Example 2: Get selected text ===
+<code>
+exec: function() {
+	var self = this;
+	alert("You have selected:" + self.get_selected_text());
+}
+</code>
+===Example 3: Replace something with something ===
+<code>
+exec: function() {
+	var self = this;
+	var text = self.get_content();
+	text = text.replace( /<BR>/gi, '[BR]' );
+	self.set_content(text);
+}
+</code>
+===Example 4: Execute command for browser's design mode editor ===
+<code>
+exec: function() {
+	var self = this;
+	self.editor_cmd('insertImage', 'uploads/screenshot.jpg');
+}
+</code>
+
+Just look at 'jquery.rte.tb' inside of full package and you will see more complex, real functionality like file uploads, color selections and other.
+
+== args (string or array) ==
+Just additional arguments for 'command'. Read more about it at 'command' section (Check URLs for specification)
+
+== select (string) ==
+Sometimes you need not a common control, but a selection from few values, like font selection, for example. In that case you can provide a html-code for that selection here. 
+===Example: ===
+<code>
+select: "
+<select>\
+	<option value="">-</option>\
+	<option value="1">1 (8pt)</option>\
+	<option value="2">2 (10pt)</option>\
+	<option value="3">3 (12pt)</options>\
+	<option value="4">4 (14pt)</option>\
+	<option value="5">5 (16pt)</options>\
+	<option value="6">6 (18pt)</option>\
+	<option value="7">7 (20pt)</options>\
+</select>\
+"
+</code>
+
+== arg_cmp ( function(node, tag) ) ==
+This is callback function to compare DOM node and tag from *tags* parameter. It's using by core (*set_selected_controls*) to mark active controls on toolbar. Read more about it in API section. Shortly: *node* - is DOM object, *tag* - is value from *tags* array (read more below).
+
+===Example: ===
+<code>
+	function(node, tag) {
+		tag = tag.replace(/<([^>]*)>/, '$1');
+		return (tag.toLowerCase() == node.nodeName.toLowerCase());
+	}
+</code>
+
+== hint (string) ==
+You can add extended hint for control that will be shown (core will set 'title' for common controls).
+
+=== Example: ===
+hint: 'Make you text bold'
+
+== tags (array) ==
+This array is using by core (*set_selected_controls*) to mark active controls. Using with 
+*arg_cmp* callback and core(*set_selected_controls*).
+
+=== Example: ===
+tags: ['b', 'strong']
