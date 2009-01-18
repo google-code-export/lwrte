@@ -1,0 +1,40 @@
+#labels Featured
+= Introduction =
+
+So you decided to create own specific toolbar for you project? Let's do it, but first of all, you will have to study a core api abit. It's unbloated and will not require a lot of your time.
+
+
+= Details =
+First of all, let's try to understand idiology a bit. lwRTE has only text-data in time(depends on current mode). Most popular editors has both (formatted text and html-source) and trying to sync it time from time, but in our case - the only text in memory. When you initialize rich text editor for your textarea, new iframe created with text from that textarea. After that, textarea removed from memory and DOM. When you switch into source mode, then new textarea created with text from iframe. After that, iframe removed from memory and DOM.
+
+*There is the only editor (iframe or textarea) in time, with only copy of your text!*
+
+Just remember - for source mode we have a textarea as editor, for design mode (rich text editor) we have iframe as editor.
+
+  * source mode - textarea as editor
+  * design mode - iframe as editor
+
+== Functions ==
+===editor_cmd(command, args)===
+executes built-in 'command' with 'args' for editor in design mode. 'command' is browser specific command for design mode. 
+*That function must be executed only in design mode.*
+
+More about that commands here:<br>
+  http://msdn.microsoft.com/en-us/library/ms533049(VS.85).aspx<br>
+  http://www.mozilla.org/editor/midas-spec.html<br>
+
+===get_toolbar()===
+===activate_toolbar(editor, tb)===
+===enable_design_mode()===
+===disable_design_mode(submit)===
+===toolbar_click(obj, control)===
+===create_toolbar(controls)===
+===create_panel(title, width)===
+===get_content()===
+===set_content(content)===
+===set_selected_controls(node, controls)===
+===get_selected_element()===
+===get_selection_range()===
+===get_selected_text()===
+===get_selected_html()===
+===selection_replace_with(html)===
