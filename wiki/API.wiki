@@ -1,7 +1,7 @@
 #labels Featured
 = Introduction =
 
-So you decided to create own specific toolbar for you project? Let's do it, but first of all, you will have to study a core api abit. It's unbloated and will not require a lot of your time.
+So you decided to create own specific toolbar for your project? Let's do it, but first of all, you will have to study a core api a bit. It's unbloated and will not require a lot of your time.
 
 
 = Details =
