@@ -1,2 +1,3 @@
+== Help sections ==
   * [http://code.google.com/p/lwrte/wiki/API API]
   * [http://code.google.com/p/lwrte/wiki/Toolbars Toolbars]
