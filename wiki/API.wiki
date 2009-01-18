@@ -11,30 +11,62 @@ First of all, let's try to understand idiology a bit. lwRTE has only text-data i
 
 Just remember - for source mode we have a textarea as editor, for design mode (rich text editor) we have iframe as editor.
 
-  * source mode - textarea as editor
-  * design mode - iframe as editor
+  * source mode - textarea as editor (to get DOM instance: *this.textarea*)
+  * design mode - iframe as editor (to get DOM instance: *this.iframe*)
 
 == Functions ==
+
+===get_content()===
+Use it if you want *to get content* of current editor. It's the only right function to get content. Works fine for both mode - design and source.
+
+===set_content(content)===
+Use it if you want *to set content* of current editor. It's the only right function to set content. Works fine for both mode - design and source.
+
+===get_selected_text()===
+Use it if you want to get selected text without html tags. *Works for design mode only.*
+
+===get_selected_html()===
+Use it if you want to get selected text with html tags. *Works for design mode only.*
+
+===selection_replace_with(html)===
+Use it to replace selection with 'html'. *Works for design mode only.*
+
 ===editor_cmd(command, args)===
-executes built-in 'command' with 'args' for editor in design mode. 'command' is browser specific command for design mode. 
-*That function must be executed only in design mode.*
+Executes built-in 'command' with 'args' for editor in design mode. 'command' is browser specific command for design mode. *Works for design mode only.*
 
 More about that commands here:<br>
   http://msdn.microsoft.com/en-us/library/ms533049(VS.85).aspx<br>
   http://www.mozilla.org/editor/midas-spec.html<br>
 
-===get_toolbar()===
-===activate_toolbar(editor, tb)===
 ===enable_design_mode()===
+*Turn on Design Mode*. Design Mode - mode where you can execute special commands to make changes into DOM. Use *editor_cmd* function for that. This function does: creates new iframe, copies text from textarea, removes textarea from DOM, turn on design mode for iframe.
+
 ===disable_design_mode(submit)===
-===toolbar_click(obj, control)===
+*Turn off Design Mode*. Actually this function does: creates new textarea, copies text from iframe, removes iframe from DOM.
+
 ===create_toolbar(controls)===
+This function creates toolbar from provided controls(creates, without insertion into the DOM). You can use it later with function *activate_toolbar*.
+
 ===create_panel(title, width)===
-===get_content()===
-===set_content(content)===
-===set_selected_controls(node, controls)===
-===get_selected_element()===
+If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (use can use 'show', 'fadeIn' and other jQuery effect funсtions).
+
+===get_toolbar()===
+That function returns jQuery object with current active toolbar ('.rte-toolbar') for editor. Remember, we have different toolbars for source mode and design mode!
+
+===activate_toolbar(editor, tb)===
+That function activates toolbar 'tb' for editor. Actually it does next: remove current toolbar from DOM for 'editor' and insert 'tb' into DOM.
+
+===toolbar_click(obj, control)===
+This is callback function for any toolbar control. Toolbar consists of number of controls (buttons and etc). Read more about toolbars in documentation for it.
+This callback does next:
+If control has own callback, than it executes.
+If contol hasn't callback, but have 'command' and current mode is design mode, then it executes that 'command'.
+
 ===get_selection_range()===
-===get_selected_text()===
-===get_selected_html()===
-===selection_replace_with(html)===
+This function returns range object (browser specific) for current selection. *Works for design mode only.*
+
+===get_selected_element()===
+This functions locate DOM oject at mouse cursor. You can use that node for *set_selected_controls* function. *Works for design mode only.* 
+
+===set_selected_controls(node, controls)===
+This function marks toolbar's controls (works with 'controls' that you provided) as active for specific node (node is DOM object where mouse cursor is placed right now). *Works for design mode only.*
