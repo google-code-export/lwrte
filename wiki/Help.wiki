@@ -1,5 +1,6 @@
 #labels Featured
 = Documentation for Light weight RTE (WYSIWYG) jQuery plugin =
 
-[http://code.google.com/p/lwrte/wiki/API CORE-API]
+== Help for: ==
+[http://code.google.com/p/lwrte/wiki/API CORE-API]<br>
 [http://code.google.com/p/lwrte/wiki/TOOLBARS TOOLBARS]
