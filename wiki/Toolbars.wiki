@@ -30,7 +30,8 @@ Controls is javascript object actually, that has specific format. Format is simp
 {
 	*control_name1* : {...},
 	*control_name2* : {...},
-	*control_name3* : {...}
+	*...*
+	*control_nameN* : {...}
 }
 </pre>
 
