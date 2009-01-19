@@ -63,7 +63,7 @@ You can read more about that commands here:<br>
   http://www.mozilla.org/editor/midas-spec.html<br>
 
 == separator (boolean) ==
-Just set it true, if you want add new separator inside of your toolbar. Other parameters are omitted.
+Just set it true, if you want to add new separator inside of your toolbar. Other parameters are omitted.
 === Example: ===
 separator: true
 
