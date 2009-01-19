@@ -139,6 +139,7 @@ tags: ['b', 'strong']
 Ok, for example, you need some additional text processing  before submit and want to implement it easily? Not a problem. Just add any parameter you want (from documentation above) for *enabled* and *disable* controls. *enable* is using on source mode toolbar and *disable* is using on design mode toolbar. Don't care about turning on/off design mode, core will do rest things.
 
 === Example: ===
+<code>
 rte_toolbar = {
 	disable: {
 		exec: function() { alert("Press OK to turn OFF design mode!"); }
@@ -150,6 +151,6 @@ html_toolbar = {
 		exec: function() { alert("Press OK to turn ON design mode!"); }
 	}
 };
-
+</code>
 <hr>
 *Check source of basic toolbar to get more examples of controls*
