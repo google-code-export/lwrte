@@ -29,14 +29,14 @@ Controls is javascript object actually, that has specific format. Format is simp
 <code>
 {
 	*control_name1* : {...},
-	*control_name2* : {...},
-	*...*
+	*control_name2* : {...},<br>
+	*...*<br>
 	*control_nameN* : {...}
 }
 </code>
 
 == Format of control ==
-<pre>
+<code>
 *control_name*: {
 	*command:* string
 	*separator:* boolean
@@ -47,7 +47,7 @@ Controls is javascript object actually, that has specific format. Format is simp
 	*hint*: string
 	*tags:* array
 }
-</pre>
+</code>
 
 Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
 
