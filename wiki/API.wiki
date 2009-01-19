@@ -62,8 +62,8 @@ That function activates toolbar 'tb' for editor. Actually it does next: remove c
 ===toolbar_click(obj, control)===
 This is callback function for any toolbar control. Toolbar consists of number of controls (buttons and etc). Read more about toolbars in documentation for it.
 This callback does next:
-  *If 'control' has own callback, than it executes.
-  *If 'control' hasn't callback, but have 'command' and current mode is design mode, then it executes that 'command'. 'obj' is control that was clicked/changed.
+  * If 'control' has own callback, than it executes.
+  * If 'control' hasn't callback, but have 'command' and current mode is design mode, then it executes that 'command'. 'obj' is control that was clicked/changed.
 
 ===get_selection_range()===
 This function returns range object (browser specific) for current selection. *Works for design mode only.*
