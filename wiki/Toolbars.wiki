@@ -16,7 +16,8 @@ As you can see there are 2 options: *controls_rte* and *controls_html*. Later yo
 	$('.rte').rte();
 </code>
 you will get next:
-[img1] and [img2]
+<img src="http://lwrte.googlecode.com/files/empty1.jpg"> and <img src="http://lwrte.googlecode.com/files/empty2.jpg">
+
 The only controls enable\disable as you see. It has built-in callback, but actually you can overwrite it (inherit, by other words. It's very useful for additional text-processing between switching of modes or before submit).
 
 Ok, now you are really ready to create own controls.
