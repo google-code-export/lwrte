@@ -26,13 +26,13 @@ Ok, now you are really ready to create own controls.
 Controls is javascript object actually, that has specific format. Format is simple, and probably suit for any task that you will want. Controls is the thing that you provide at startup/initialize step as 'controls_rte' and 'controls_html' inside of options. Look for example above.
 
 == Format of toolbar ==
-<code>
+<pre>
 {
 	*control_name1* : {...},
 	*control_name2* : {...},
 	*control_nameN* : {...}
 }
-</code>
+</pre>
 
 == Format of control ==
 <pre>
