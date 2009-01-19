@@ -25,19 +25,30 @@ Ok, now you are really ready to create own controls.
 = Creating Own Controls =
 Controls is javascript object actually, that has specific format. Format is simple, and probably suit for any task that you will want. Controls is the thing that you provide at startup/initialize step as 'controls_rte' and 'controls_html' inside of options. Look for example above.
 
-== Format of controls ==
+== Format of toolbar ==
 <pre>
 {
- *command:* string
- *separator:* boolean
- *exec:* function
- *args:* string or array
- *select:* string
- *arg_cmp:* function
- *hint*: string
- *tags:* array
+	*control_name1* : {...},
+	*control_name2* : {...},
+	*control_name3* : {...}
 }
 </pre>
+
+== Format of control ==
+<pre>
+*control_name*: {
+	*command:* string
+	*separator:* boolean
+	*exec:* function
+	*args:* string or array
+	*select:* string
+	*arg_cmp:* function
+	*hint*: string
+	*tags:* array
+}
+</pre>
+
+Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
 
 Let's talk about each thing.
 
