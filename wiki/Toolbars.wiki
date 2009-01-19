@@ -115,6 +115,7 @@ This is callback function to compare DOM node and tag from *tags* parameter. It'
 
 ===Example: ===
 <code>
+arg_cmp:
 	function(node, tag) {
 		tag = tag.replace(/<([^>]*)>/, '$1');
 		return (tag.toLowerCase() == node.nodeName.toLowerCase());
@@ -133,6 +134,22 @@ This array is using by core (*set_selected_controls*) to mark active controls. U
 
 === Example: ===
 tags: ['b', 'strong']
+
+= How to extend enable/disable control? =
+Ok, for example, you need some additional text processing  before submit and want to implement it easily? Not a problem. Just add any parameter you want (from documentation above) for *enabled* and *disable* controls. *enable* is using on source mode toolbar and *disable* is using on design mode toolbar. Don't care about turning on/off design mode, core will do rest things.
+
+=== Example: ===
+rte_toolbar = {
+	disable: {
+		exec: function() { alert("Press OK to turn OFF design mode!"); }
+	}
+};
+
+html_toolbar = {
+	enable: {
+		exec: function() { alert("Press OK to turn ON design mode!"); }
+	}
+};
 
 <hr>
 *Check source of basic toolbar to get more examples of controls*
