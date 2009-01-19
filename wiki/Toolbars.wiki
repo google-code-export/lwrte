@@ -140,13 +140,13 @@ Ok, for example, you need some additional text processing  before submit and wan
 
 === Example: ===
 <code>
-rte_toolbar = {
+var rte_toolbar = {
 	disable: {
 		exec: function() { alert("Press OK to turn OFF design mode!"); }
 	}
 };
 
-html_toolbar = {
+var html_toolbar = {
 	enable: {
 		exec: function() { alert("Press OK to turn ON design mode!"); }
 	}
