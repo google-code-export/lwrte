@@ -51,7 +51,7 @@ More about that commands here:<br>
 This function creates toolbar from provided controls(creates, without insertion into the DOM). You can use it later with function *activate_toolbar*. Read more about controls at "Toolbars" section.
 
 ===create_panel(title, width)===
-If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (use can use 'show', 'fadeIn' and other jQuery effect funсtions). You can set specific 'title' and 'width' of that panel.
+If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (you can use 'show', 'fadeIn' and other jQuery effect funсtions). You can set specific 'title' and 'width' of that panel.
 
 ===get_toolbar()===
 That function returns jQuery object with current active toolbar ('.rte-toolbar') for editor. Remember, we have different toolbars for source mode and design mode!
