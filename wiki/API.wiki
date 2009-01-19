@@ -48,7 +48,7 @@ More about that commands here:<br>
   * if 'submit' is true, then creates new 'hidden' input, copies text from iframe and submit data.
 
 ===create_toolbar(controls)===
-This function creates toolbar from provided controls(creates, without insertion into the DOM). You can use it later with function *activate_toolbar*.
+This function creates toolbar from provided controls(creates, without insertion into the DOM). You can use it later with function *activate_toolbar*. Read more about controls at "Toolbars" section.
 
 ===create_panel(title, width)===
 If you want to create additional panel(window) for toolbar control (I.e. when user clicks on control), then it's right function. It creates invisible additional panel and inserting it into the DOM. You need to make it visible manually (use can use 'show', 'fadeIn' and other jQuery effect funсtions). You can set specific 'title' and 'width' of that panel.
