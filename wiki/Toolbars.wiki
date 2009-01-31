@@ -47,6 +47,27 @@ Controls is javascript object actually, that has specific format. Format is simp
 	*tags:* array
 }
 </pre>
+=== Example 1: separator ===
+<code>
+	s1: {separator: true}
+</code>
+=== Example 2: basic control ===
+<code>
+	bold: {command: 'bold', tags:['b', 'strong']}
+</code>
+=== Example 3: advanced control ===
+<code>
+	bold: {
+		exec: function() { 
+			var self = this;
+			alert("Control clicked!"); 
+			self.editor_cmd('bold');
+		},
+		hint: "New version of bold",
+		tags: ['b', 'strong']
+	}
+</code>
+
 
 Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
 
