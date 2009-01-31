@@ -47,6 +47,9 @@ Controls is javascript object actually, that has specific format. Format is simp
 	*tags:* array
 }
 </pre>
+
+Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
+
 === Example 1: separator ===
 <code>
 	s1: {separator: true}
@@ -67,9 +70,6 @@ Controls is javascript object actually, that has specific format. Format is simp
 		tags: ['b', 'strong']
 	}
 </code>
-
-
-Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
 
 Let's talk about each thing.
 
