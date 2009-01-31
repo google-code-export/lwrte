@@ -69,7 +69,7 @@ This callback does next:
 This function returns range object (browser specific) for current selection. *Works for design mode only.*
 
 ===get_selected_element()===
-This functions locate DOM oject at mouse cursor. You can use that node for *set_selected_controls* function. *Works for design mode only.* 
+This functions locate DOM object at mouse cursor. You can use that node for *set_selected_controls* function. *Works for design mode only.* 
 
 ===set_selected_controls(node, controls)===
 This function marks toolbar's controls (works with 'controls' that you provided) as active for specific node (node is DOM object where mouse cursor is placed right now). *Works for design mode only.*
