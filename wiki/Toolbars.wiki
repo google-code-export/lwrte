@@ -11,7 +11,7 @@ Let's look for basic usage of plugin (turn any textarea with class 'rte' into WY
 		controls_html: html_toolbar
 	});
 </code>
-As you can see there are 2 options: *controls_rte* and *controls_html*. Later you will know know to create it. Just remember, plugin has no any bult-in toolbars or controls by default. If you will use it without any options:
+As you can see there are 2 options: *controls_rte* and *controls_html*. Later you will know how to create it. Just remember, plugin has no any bult-in toolbars or controls by default. If you will use it without any options:
 <code>
 	$('.rte').rte();
 </code>
