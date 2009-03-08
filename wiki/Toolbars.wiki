@@ -39,10 +39,11 @@ Controls is javascript object actually, that has specific format. Format is simp
 *control_name*: {
 	*command:* string
 	*separator:* boolean
+	*ini:* function
 	*exec:* function
 	*args:* string or array
 	*select:* string
-	*arg_cmp:* function
+	*tag_cmp:* function
 	*hint*: string
 	*tags:* array
 }
@@ -87,6 +88,27 @@ You can read more about that commands here:<br>
 Just set it true, if you want to add new separator inside of your toolbar. Other parameters are omitted.
 === Example: ===
 separator: true
+
+== init( function(rte) ) ==
+Well, this is function that will be called before adding that control into the toolbar. So additional manipulations can be done. For example, dependence on 'args' of that control. Remember 'this' reference at that function is control, but not rte!
+===Example 1: Init ===
+<code>
+init: function(rte) {
+	alert("Control setup");
+	this.exec = function() { alert('on fly callback.') };
+}
+
+===Example 2: Init and args===
+<code>
+init: function(rte) {
+	if(this.args == 'arg1') {
+		this.exec = function() { alert('exec1.') };
+	} else {
+		this.exec = function() { alert('exec2.') };
+	}
+
+	alert(this.exec);
+}
 
 == exec ( function() ) ==
 Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference.
@@ -143,12 +165,12 @@ select: "
 "
 </code>
 
-== arg_cmp ( function(node, tag) ) ==
+== tag_cmp ( function(node, tag) ) ==
 This is callback function to compare DOM node and tag from *tags* parameter. It's using by core (*set_selected_controls*) to mark active controls on toolbar. Read more about it in API section. Shortly: *node* - is DOM object, *tag* - is value from *tags* array (read more below).
 
 ===Example: ===
 <code>
-arg_cmp:
+tag_cmp:
 	function(node, tag) {
 		tag = tag.replace(/<([^>]*)>/, '$1');
 		return (tag.toLowerCase() == node.nodeName.toLowerCase());
@@ -163,7 +185,7 @@ hint: 'Make you text bold'
 
 == tags (array) ==
 This array is using by core (*set_selected_controls*) to mark active controls. Using with 
-*arg_cmp* callback and core(*set_selected_controls*).
+*tag_cmp* callback and core(*set_selected_controls*).
 
 === Example: ===
 tags: ['b', 'strong']
