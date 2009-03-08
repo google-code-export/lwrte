@@ -97,8 +97,9 @@ init: function(rte) {
 	alert("Control setup");
 	this.exec = function() { alert('on fly callback.') };
 }
+</code>
 
-===Example 2: Init and args===
+===Example 2: Init and args ===
 <code>
 init: function(rte) {
 	if(this.args == 'arg1') {
@@ -109,7 +110,7 @@ init: function(rte) {
 
 	alert(this.exec);
 }
-
+</code>
 == exec ( function() ) ==
 Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference.
 ===Example 1: Hello world ===
