@@ -111,24 +111,25 @@ init: function(rte) {
 	alert(this.exec);
 }
 </code>
-== exec ( function() ) ==
-Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference.
+== exec ( function(args) ) ==
+Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference. If you provided 'args' for that control, than you can get it as argument 'args'. If contol is select, than last argument will be 'select' object, so you will be able to get index of selected item.
+
 ===Example 1: Hello world ===
 <code>
-exec: function() {
+exec: function(args) {
 	alert("Hello world from that control");
 }
 </code>
 ===Example 2: Get selected text ===
 <code>
-exec: function() {
+exec: function(args) {
 	var self = this;
 	alert("You have selected:" + self.get_selected_text());
 }
 </code>
 ===Example 3: Replace something with something ===
 <code>
-exec: function() {
+exec: function(args) {
 	var self = this;
 	var text = self.get_content();
 	text = text.replace( /<BR>/gi, '[BR]' );
@@ -137,9 +138,26 @@ exec: function() {
 </code>
 ===Example 4: Execute command for browser's design mode editor ===
 <code>
-exec: function() {
+exec: function(args) {
 	var self = this;
 	self.editor_cmd('insertImage', 'uploads/screenshot.jpg');
+}
+</code>
+
+===Example 5: callback for select control===
+<code>
+exec: function(args) {
+	if(args) {
+		try {
+			var css = args.options[args.selectedIndex].value
+			var self = this;
+			var html = self.get_selected_text();
+			html = '<span class="' + css + '">' + html + '</span>';
+			self.selection_replace_with(html);
+			args.selectedIndex = 0;
+		} catch(e) {
+		}
+	}
 }
 </code>
 
