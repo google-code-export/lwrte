@@ -14,6 +14,33 @@ Just remember - for source mode we have a textarea as editor, for design mode (r
   * source mode - textarea as editor (to get DOM instance: *this.textarea*)
   * design mode - iframe as editor (to get DOM instance: *this.iframe*)
 
+
+== Usage ==
+<code>
+$(document).ready(function() {
+	var arr = $('.rte1').rte({
+		css: [['default.css']],
+		controls_rte: rte_toolbar,
+		controls_html: html_toolbar
+	});
+
+	$('.rte2').rte({
+		css: [['default.css', 'styles.css']],
+		width: 450,
+		height: 200,
+		controls_rte: rte_toolbar,
+		controls_html: html_toolbar
+	}, arr);
+
+	//arr is array of RTEm you can use api as you want.
+
+});
+</code>
+
+As you can see, you can use array that returned as you want. Both methods to access is possinble - by index (for anonimous textareas) or by ID. 
+Ex: *arr[[0]].get_content()* or *arr[['txt1']].get_content()*
+
+
 == Functions ==
 
 ===get_content()===
