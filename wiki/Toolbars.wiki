@@ -62,9 +62,9 @@ Where *contol_name* is name of your control. It's used as className for CSS-styl
 === Example 3: advanced control ===
 <code>
 	bold: {
-		exec: function() { 
+		exec: function() {
 			var self = this;
-			alert("Control clicked!"); 
+			alert("Control clicked!");
 			self.editor_cmd('bold');
 		},
 		hint: "New version of bold",
