@@ -101,3 +101,5 @@ This functions locate DOM object at mouse cursor. You can use that node for *set
 
 ===set_selected_controls(node, controls)===
 This function marks toolbar's controls (works with 'controls' that you provided) as active for specific node (node is DOM object where mouse cursor is placed right now). *Works for design mode only.*
+
+<g:plusone size="medium"></g:plusone>
