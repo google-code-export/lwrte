@@ -5,16 +5,16 @@
 The idea of that RTE plugin for jQuery is - split core and toolbars functionality, but without any bloating core-api. So core can do only basic functions (read about it in API section).
 
 Let's look for basic usage of plugin (turn any textarea with class 'rte' into WYSIWYG):
-<code>
+{{{
 	$('.rte').rte({
 		controls_rte: rte_toolbar,
 		controls_html: html_toolbar
 	});
-</code>
+}}}
 As you can see there are 2 options: *controls_rte* and *controls_html*. Later you will know how to create it. Just remember, plugin has no any bult-in toolbars or controls by default. If you will use it without any options:
-<code>
+{{{
 	$('.rte').rte();
-</code>
+}}}
 you will get next:<br/>
 <img src="http://lwrte.googlecode.com/files/empty1.jpg"> and <img src="http://lwrte.googlecode.com/files/empty2.jpg">
 
@@ -52,15 +52,15 @@ Controls is javascript object actually, that has specific format. Format is simp
 Where *contol_name* is name of your control. It's used as className for CSS-styling. This must be unique for each toolbar. Shortly: only one control with 'control_name' per toolbar.
 
 === Example 1: separator ===
-<code>
+{{{
 	s1: {separator: true}
-</code>
+}}}
 === Example 2: basic control ===
-<code>
+{{{
 	bold: {command: 'bold', tags:['b', 'strong']}
-</code>
+}}}
 === Example 3: advanced control ===
-<code>
+{{{
 	bold: {
 		exec: function() {
 			var self = this;
@@ -70,7 +70,7 @@ Where *contol_name* is name of your control. It's used as className for CSS-styl
 		hint: "New version of bold",
 		tags: ['b', 'strong']
 	}
-</code>
+}}}
 
 Let's talk about each thing.
 
@@ -78,7 +78,9 @@ Let's talk about each thing.
 It's command for browser's design mode editor. Some commands need additional arguments (for example, name of font), some don't. It's browser specific feature. 
 
 === Example: ===
+{{{
 command: 'formatBlock'
+}}}
 
 You can read more about that commands here:<br>
   http://msdn.microsoft.com/en-us/library/ms533049(VS.85).aspx<br>
@@ -87,20 +89,22 @@ You can read more about that commands here:<br>
 == separator (boolean) ==
 Just set it true, if you want to add new separator inside of your toolbar. Other parameters are omitted.
 === Example: ===
+{{{
 separator: true
+}}}
 
 == init( function(rte) ) ==
 Well, this is function that will be called before adding that control into the toolbar. So additional manipulations can be done. For example, dependence on 'args' of that control. Remember 'this' reference at that function is control, but not rte!
 ===Example 1: Init ===
-<code>
+{{{
 init: function(rte) {
 	alert("Control setup");
 	this.exec = function() { alert('on fly callback.') };
 }
-</code>
+}}}
 
 ===Example 2: Init and args ===
-<code>
+{{{
 init: function(rte) {
 	if(this.args == 'arg1') {
 		this.exec = function() { alert('exec1.') };
@@ -110,42 +114,43 @@ init: function(rte) {
 
 	alert(this.exec);
 }
-</code>
+}}}
+
 == exec ( function(args) ) ==
 Well, this is a heart of you own specific control. Here you must place any functionality that you want from that control. To get instance of lwRTE object (to use core functions), you can use 'this' reference. If you provided 'args' for that control, than you can get it as argument 'args'. If contol is select, than last argument will be 'select' object, so you will be able to get index of selected item.
 
 ===Example 1: Hello world ===
-<code>
+{{{
 exec: function(args) {
 	alert("Hello world from that control");
 }
-</code>
+}}}
 ===Example 2: Get selected text ===
-<code>
+{{{
 exec: function(args) {
 	var self = this;
 	alert("You have selected:" + self.get_selected_text());
 }
-</code>
+}}}
 ===Example 3: Replace something with something ===
-<code>
+{{{
 exec: function(args) {
 	var self = this;
 	var text = self.get_content();
 	text = text.replace( /<BR>/gi, '[BR]' );
 	self.set_content(text);
 }
-</code>
+}}}
 ===Example 4: Execute command for browser's design mode editor ===
-<code>
+{{{
 exec: function(args) {
 	var self = this;
 	self.editor_cmd('insertImage', 'uploads/screenshot.jpg');
 }
-</code>
+}}}
 
 ===Example 5: callback for select control===
-<code>
+{{{
 exec: function(args) {
 	if(args) {
 		try {
@@ -159,7 +164,7 @@ exec: function(args) {
 		}
 	}
 }
-</code>
+}}}
 
 Just look at 'jquery.rte.tb' inside of full package and you will see more complex, real functionality like file uploads, color selections and other.
 
@@ -169,7 +174,7 @@ Just additional arguments for 'command'. Read more about it at 'command' section
 == select (string) ==
 Sometimes you need not a common control, but a selection from few values, like font selection, for example. In that case you can provide a html-code for that selection here. 
 ===Example: ===
-<code>
+{{{
 select: "
 <select>\
 	<option value="">-</option>\
@@ -182,38 +187,42 @@ select: "
 	<option value="7">7 (20pt)</options>\
 </select>\
 "
-</code>
+}}}
 
 == tag_cmp ( function(node, tag) ) ==
 This is callback function to compare DOM node and tag from *tags* parameter. It's using by core (*set_selected_controls*) to mark active controls on toolbar. Read more about it in API section. Shortly: *node* - is DOM object, *tag* - is value from *tags* array (read more below).
 
 ===Example: ===
-<code>
+{{{
 tag_cmp:
 	function(node, tag) {
 		tag = tag.replace(/<([^>]*)>/, '$1');
 		return (tag.toLowerCase() == node.nodeName.toLowerCase());
 	}
-</code>
+}}}
 
 == hint (string) ==
 You can add extended hint for control that will be shown (core will set 'title' for common controls).
 
 === Example: ===
+{{{
 hint: 'Make you text bold'
+}}}
 
 == tags (array) ==
 This array is using by core (*set_selected_controls*) to mark active controls. Using with 
 *tag_cmp* callback and core(*set_selected_controls*).
 
 === Example: ===
+{{{
 tags: ['b', 'strong']
+}}}
 
 = How to extend enable/disable control? =
 Ok, for example, you need some additional text processing  before submit and want to implement it easily? Not a problem. Just add any parameter you want (from documentation above) for *enabled* and *disable* controls. *enable* is using on source mode toolbar and *disable* is using on design mode toolbar. Don't care about turning on/off design mode, core will do rest things.
 
 === Example: ===
-<code>
+{{{
 var rte_toolbar = {
 	disable: {
 		exec: function() { alert("Press OK to turn OFF design mode!"); }
@@ -225,6 +234,6 @@ var html_toolbar = {
 		exec: function() { alert("Press OK to turn ON design mode!"); }
 	}
 };
-</code>
+}}}
 <hr>
 *Check source of basic toolbar to get more examples of controls*
