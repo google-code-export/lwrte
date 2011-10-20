@@ -237,3 +237,5 @@ var html_toolbar = {
 }}}
 <hr>
 *Check source of basic toolbar to get more examples of controls*
+
+<g:plusone size="medium"></g:plusone>
