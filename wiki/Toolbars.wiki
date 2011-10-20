@@ -39,7 +39,7 @@ Controls is javascript object actually, that has specific format. Format is simp
 *control_name*: {
 	*command:* string
 	*separator:* boolean
-	*ini:* function
+	*init:* function
 	*exec:* function
 	*args:* string or array
 	*select:* string
