@@ -16,7 +16,7 @@ Just remember - for source mode we have a textarea as editor, for design mode (r
 
 
 == Usage ==
-<code>
+{{{
 $(document).ready(function() {
 	var arr = $('.rte1').rte({
 		css: [['default.css']],
@@ -35,10 +35,11 @@ $(document).ready(function() {
 	//arr is array of RTEm you can use api as you want.
 
 });
-</code>
+}}}
 
 As you can see, you can use array that returned as you want. Both methods to access is possinble - by index (for anonimous textareas) or by ID. 
-Ex: *arr[[0]].get_content()* or *arr[['txt1']].get_content()*
+Ex:
+*{{{arr[[0]].get_content()}}}* or *{{{arr[['txt1']].get_content()}}}*
 
 
 == Functions ==
